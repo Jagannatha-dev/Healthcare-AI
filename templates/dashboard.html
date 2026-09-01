@@ -1,0 +1,565 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container py-5">
+
+
+    <!-- =====================================================
+         WELCOME CARD
+    ====================================================== -->
+
+    <div class="card shadow-lg border-0 mb-5">
+
+        <div class="card-body p-5">
+
+            <div class="row align-items-center">
+
+
+                <!-- Welcome Text -->
+
+                <div class="col-lg-8">
+
+                    <h2 class="fw-bold">
+
+                        Welcome,
+
+                        <span class="text-primary">
+
+                            {{ user_name }}
+
+                        </span>
+
+                        👋
+
+                    </h2>
+
+
+                    <p class="text-muted mt-3">
+
+                        Your AI Healthcare Assistant is ready
+                        to help you predict diseases, monitor
+                        your health, and provide personalized
+                        healthcare recommendations.
+
+                    </p>
+
+                </div>
+
+
+                <!-- Healthcare Icon -->
+
+                <div class="col-lg-4 text-center">
+
+                    <i
+                        class="bi bi-heart-pulse-fill text-primary"
+                        style="font-size:100px;"
+                    ></i>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         STATISTICS
+    ====================================================== -->
+
+    <div class="row mb-5">
+
+
+        <!-- Diseases -->
+
+        <div class="col-md-3">
+
+            <div class="card text-center p-4">
+
+                <i
+                    class="bi bi-heart-pulse-fill
+                           text-danger fs-1"
+                ></i>
+
+                <h3 class="mt-3">
+                    100+
+                </h3>
+
+                <p>
+                    Diseases
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Symptoms -->
+
+        <div class="col-md-3">
+
+            <div class="card text-center p-4">
+
+                <i
+                    class="bi bi-activity
+                           text-success fs-1"
+                ></i>
+
+                <h3 class="mt-3">
+                    200+
+                </h3>
+
+                <p>
+                    Symptoms
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- AI -->
+
+        <div class="col-md-3">
+
+            <div class="card text-center p-4">
+
+                <i
+                    class="bi bi-cpu-fill
+                           text-primary fs-1"
+                ></i>
+
+                <h3 class="mt-3">
+                    AI
+                </h3>
+
+                <p>
+                    Prediction Engine
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Support -->
+
+        <div class="col-md-3">
+
+            <div class="card text-center p-4">
+
+                <i
+                    class="bi bi-clock-history
+                           text-warning fs-1"
+                ></i>
+
+                <h3 class="mt-3">
+                    24×7
+                </h3>
+
+                <p>
+                    Support
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         QUICK ACTIONS
+    ====================================================== -->
+
+    <h3 class="fw-bold mb-4">
+
+        Quick Actions
+
+    </h3>
+
+
+    <div class="row g-4">
+
+
+        <!-- Disease Prediction -->
+
+        <div class="col-lg-3">
+
+            <div class="feature-box">
+
+                <i class="bi bi-heart-pulse-fill"></i>
+
+                <h5>
+                    Disease Prediction
+                </h5>
+
+                <p>
+                    Predict diseases using AI.
+                </p>
+
+                <a
+                    href="{{ url_for(
+                        'prediction_bp.symptoms_page'
+                    ) }}"
+                    class="btn btn-primary"
+                >
+
+                    Open
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Prediction History -->
+
+        <div class="col-lg-3">
+
+            <div class="feature-box">
+
+                <i class="bi bi-clock-history"></i>
+
+                <h5>
+                    Prediction History
+                </h5>
+
+                <p>
+                    View previous predictions.
+                </p>
+
+                <a
+                    href="{{ url_for('history') }}"
+                    class="btn btn-success"
+                >
+
+                    History
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Profile -->
+
+        <div class="col-lg-3">
+
+            <div class="feature-box">
+
+                <i class="bi bi-person-circle"></i>
+
+                <h5>
+                    Profile
+                </h5>
+
+                <p>
+                    Manage your account.
+                </p>
+
+                <a
+                    href="{{ url_for('profile') }}"
+                    class="btn btn-info text-white"
+                >
+
+                    Profile
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Chatbot -->
+
+        <div class="col-lg-3">
+
+            <div class="feature-box text-center">
+
+
+                <div class="text-center mb-3">
+
+                    <i
+                        class="bi bi-robot text-primary"
+                        style="font-size:20px;"
+                    ></i>
+
+                </div>
+
+
+                <h5>
+                    AI Chatbot
+                </h5>
+
+
+                <p>
+                    Ask health-related questions.
+                </p>
+
+
+                <a
+                    href="{{ url_for('chatbot_page') }}"
+                    class="btn btn-dark"
+                >
+
+                    Open Chatbot
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HEALTH SUMMARY
+    ====================================================== -->
+
+    <div class="card shadow mt-5">
+
+
+        <div class="card-body">
+
+
+            <h3 class="fw-bold mb-4">
+
+                Health Summary
+
+            </h3>
+
+
+            <div class="row">
+
+
+                <!-- =================================================
+                     AI STATUS
+                ================================================== -->
+
+                <div class="col-md-4">
+
+                    <div class="alert alert-success">
+
+                        <h5>
+                            AI Status
+                        </h5>
+
+                        <strong>
+                            Ready
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     LAST PREDICTION
+                ================================================== -->
+
+                <div class="col-md-4">
+
+                    <div class="alert alert-info">
+
+
+                        <h4>
+                            Last Prediction
+                        </h4>
+
+
+                        {% if latest_prediction
+                              and latest_prediction.disease %}
+
+
+                            <!-- Disease -->
+
+                            <p class="mb-2">
+
+                                <strong>
+                                    {{ latest_prediction.disease }}
+                                </strong>
+
+                            </p>
+
+
+                            <!-- Confidence -->
+
+                            {% if latest_prediction.confidence
+                                  is not none %}
+
+                                <small>
+
+                                    {{
+                                        "%.2f"|format(
+                                            latest_prediction.confidence
+                                        )
+                                    }}%
+
+                                    Confidence
+
+                                </small>
+
+                            {% endif %}
+
+
+                            <!-- Prediction Date -->
+
+                            {% if latest_prediction.date %}
+
+                                <div class="mt-2">
+
+                                    <small class="text-muted">
+
+                                        {{
+                                            latest_prediction.date
+                                        }}
+
+                                    </small>
+
+                                </div>
+
+                            {% endif %}
+
+
+                        {% else %}
+
+
+                            <p class="mb-0">
+
+                                No Predictions Yet
+
+                            </p>
+
+
+                        {% endif %}
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     HEALTH SCORE
+                ================================================== -->
+
+                <div class="col-md-4">
+
+                    <div class="alert alert-warning">
+
+
+                        <h4>
+                            Health Score
+                        </h4>
+
+
+                        {% if latest_prediction
+                              and latest_prediction.confidence
+                              is not none %}
+
+
+                            {% if latest_prediction.confidence >= 80 %}
+
+
+                                <span
+                                    class="badge bg-success fs-6"
+                                >
+
+                                    Healthy
+
+                                </span>
+
+
+                            {% elif latest_prediction.confidence >= 50 %}
+
+
+                                <span
+                                    class="badge bg-warning
+                                           text-dark fs-6"
+                                >
+
+                                    Moderate Risk
+
+                                </span>
+
+
+                            {% else %}
+
+
+                                <span
+                                    class="badge bg-danger fs-6"
+                                >
+
+                                    High Risk
+
+                                </span>
+
+
+                            {% endif %}
+
+
+                            <br>
+                            <br>
+
+
+                            <strong>
+
+                                {{
+                                    "%.2f"|format(
+                                        latest_prediction.confidence
+                                    )
+                                }}%
+
+                            </strong>
+
+
+                        {% else %}
+
+
+                            <p>
+                                Not Available
+                            </p>
+
+
+                        {% endif %}
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

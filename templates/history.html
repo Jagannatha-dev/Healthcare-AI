@@ -1,0 +1,375 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Prediction History
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container py-5">
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+
+        <div>
+
+            <h1 class="fw-bold text-primary">
+
+                <i class="bi bi-clock-history"></i>
+
+                Prediction History
+
+            </h1>
+
+
+            <p class="text-muted">
+
+                View all your previous AI disease predictions.
+
+            </p>
+
+        </div>
+
+
+        <a
+            href="{{ url_for(
+                'prediction_bp.symptoms_page'
+            ) }}"
+            class="btn btn-primary"
+        >
+
+            <i class="bi bi-plus-circle"></i>
+
+            New Prediction
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SEARCH
+    ====================================================== -->
+
+    <div class="card shadow-sm border-0 mb-4">
+
+
+        <div class="card-body">
+
+            <input
+                type="text"
+                id="historySearch"
+                class="form-control"
+                placeholder="🔍 Search Prediction History..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HISTORY TABLE
+    ====================================================== -->
+
+    <div class="card shadow border-0">
+
+
+        <div class="card-body">
+
+
+            <div class="table-responsive">
+
+
+                <table
+                    class="table table-hover align-middle"
+                    id="historyTable"
+                >
+
+
+                    <thead class="table-primary">
+
+
+                        <tr>
+
+                            <th>#</th>
+
+                            <th>Date</th>
+
+                            <th>Disease</th>
+
+                            <th>Confidence</th>
+
+                            <th>Status</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                    {% if history %}
+
+
+                        {% for item in history %}
+
+
+                        <tr>
+
+
+                            <!-- History ID -->
+
+                            <td>
+
+                                {{ item[0] }}
+
+                            </td>
+
+
+                            <!-- Date -->
+
+                            <td>
+
+                                {% if item[4] %}
+
+                                    {{ item[4].strftime(
+                                        "%d-%b-%Y %I:%M %p"
+                                    ) }}
+
+                                {% else %}
+
+                                    -
+
+                                {% endif %}
+
+                            </td>
+
+
+                            <!-- Disease -->
+
+                            <td>
+
+                                <span
+                                    class="fw-bold text-primary"
+                                >
+
+                                    {{ item[1] }}
+
+                                </span>
+
+                            </td>
+
+
+                            <!-- Confidence -->
+
+                            <td>
+
+                                <span
+                                    class="badge bg-success"
+                                >
+
+                                    {{ "%.2f"|format(
+                                        item[2]
+                                    ) }}%
+
+                                </span>
+
+                            </td>
+
+
+                            <!-- Status -->
+
+                            <td>
+
+                                <span
+                                    class="badge bg-info"
+                                >
+
+                                    Completed
+
+                                </span>
+
+                            </td>
+
+
+                            <!-- View -->
+
+                            <td>
+
+    <a
+        href="{{ url_for(
+            'view_prediction',
+            history_id=item[0]
+        ) }}"
+        class="btn btn-outline-primary btn-sm"
+    >
+
+        <i class="bi bi-eye"></i>
+
+        View
+
+    </a>
+
+</td>
+
+                        </tr>
+
+
+                        {% endfor %}
+
+
+                    {% else %}
+
+
+                        <tr>
+
+
+                            <td
+                                colspan="6"
+                                class="text-center text-muted py-5"
+                            >
+
+                                <i
+                                    class="bi bi-folder2-open display-4"
+                                ></i>
+
+
+                                <br>
+                                <br>
+
+
+                                No prediction history available.
+
+
+                                <br>
+
+
+                                Your AI predictions will appear here.
+
+
+                            </td>
+
+
+                        </tr>
+
+
+                    {% endif %}
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     SEARCH SCRIPT
+====================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const searchInput =
+            document.getElementById(
+                "historySearch"
+            );
+
+        const table =
+            document.getElementById(
+                "historyTable"
+            );
+
+
+        if (!searchInput || !table) {
+            return;
+        }
+
+
+        searchInput.addEventListener(
+            "keyup",
+            function () {
+
+                const searchValue =
+                    this.value
+                        .toLowerCase()
+                        .trim();
+
+
+                const rows =
+                    table
+                        .querySelectorAll(
+                            "tbody tr"
+                        );
+
+
+                rows.forEach(
+                    function (row) {
+
+                        const text =
+                            row.textContent
+                                .toLowerCase();
+
+
+                        if (
+                            text.includes(
+                                searchValue
+                            )
+                        ) {
+
+                            row.style.display =
+                                "";
+
+                        } else {
+
+                            row.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
+</script>
+
+
+{% endblock %}

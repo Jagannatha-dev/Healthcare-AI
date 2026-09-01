@@ -1,0 +1,342 @@
+{% extends "base.html" %}
+
+{% block title %}
+Prediction Details
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h1 class="fw-bold text-primary">
+
+                <i class="bi bi-file-medical"></i>
+
+                Prediction Details
+
+            </h1>
+
+            <p class="text-muted mb-0">
+
+                View the details of your previous AI prediction.
+
+            </p>
+
+        </div>
+
+
+        <a
+            href="{{ url_for('history') }}"
+            class="btn btn-outline-primary"
+        >
+
+            <i class="bi bi-arrow-left"></i>
+
+            Back to History
+
+        </a>
+
+    </div>
+
+
+    <!-- =====================================================
+         PREDICTION RESULT
+    ====================================================== -->
+
+    <div class="card shadow-lg border-0 mb-4">
+
+        <div class="card-header bg-primary text-white">
+
+            <h4 class="mb-0">
+
+                <i class="bi bi-clipboard2-pulse"></i>
+
+                Prediction Result
+
+            </h4>
+
+        </div>
+
+
+        <div class="card-body p-4">
+
+            <div class="row g-4">
+
+
+                <!-- =================================================
+                     HISTORY ID
+                ================================================== -->
+
+                <div class="col-md-6">
+
+                    <div class="border rounded p-3 h-100">
+
+                        <small class="text-muted">
+
+                            Prediction ID
+
+                        </small>
+
+                        <h5 class="fw-bold mt-2 mb-0">
+
+                            #{{ prediction.history_id }}
+
+                        </h5>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     DATE
+                ================================================== -->
+
+                <div class="col-md-6">
+
+                    <div class="border rounded p-3 h-100">
+
+                        <small class="text-muted">
+
+                            Prediction Date
+
+                        </small>
+
+                        <h5 class="fw-bold mt-2 mb-0">
+
+                            {% if prediction.prediction_date %}
+
+                                {{ prediction.prediction_date.strftime(
+                                    "%d-%b-%Y %I:%M %p"
+                                ) }}
+
+                            {% else %}
+
+                                Not Available
+
+                            {% endif %}
+
+                        </h5>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     DISEASE
+                ================================================== -->
+
+                <div class="col-md-6">
+
+                    <div class="border rounded p-3 h-100">
+
+                        <small class="text-muted">
+
+                            Predicted Disease
+
+                        </small>
+
+                        <h3 class="fw-bold text-primary mt-2 mb-0">
+
+                            {{ prediction.disease_name }}
+
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     CONFIDENCE
+                ================================================== -->
+
+                <div class="col-md-6">
+
+                    <div class="border rounded p-3 h-100">
+
+                        <small class="text-muted">
+
+                            Prediction Confidence
+
+                        </small>
+
+                        <h3 class="fw-bold text-success mt-2 mb-0">
+
+                            {{ "%.2f"|format(
+                                prediction.confidence
+                            ) }}%
+
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SELECTED SYMPTOMS
+    ====================================================== -->
+
+    <div class="card shadow border-0 mb-4">
+
+        <div class="card-header">
+
+            <h5 class="mb-0">
+
+                <i class="bi bi-list-check"></i>
+
+                Symptoms Used for Prediction
+
+            </h5>
+
+        </div>
+
+
+        <div class="card-body">
+
+            {% if prediction.symptoms %}
+
+                {% set symptoms_list =
+                    prediction.symptoms.split(',') %}
+
+
+                <div class="row g-2">
+
+                    {% for symptom in symptoms_list %}
+
+                        {% if symptom.strip() %}
+
+                            <div class="col-md-6 col-lg-4">
+
+                                <div
+                                    class="alert alert-light border mb-2"
+                                >
+
+                                    <i
+                                        class="bi bi-check-circle text-success"
+                                    ></i>
+
+                                    {{ symptom
+                                        .strip()
+                                        .replace('_', ' ')
+                                        .title()
+                                    }}
+
+                                </div>
+
+                            </div>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <p class="text-muted mb-0">
+
+                    No symptoms were stored for this prediction.
+
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PREDICTION STATUS
+    ====================================================== -->
+
+    <div class="card shadow-sm border-0 mb-4">
+
+        <div class="card-body">
+
+            <div class="d-flex align-items-center">
+
+                <i
+                    class="bi bi-check-circle-fill text-success"
+                    style="font-size: 35px;"
+                ></i>
+
+
+                <div class="ms-3">
+
+                    <h5 class="mb-1">
+
+                        Prediction Completed
+
+                    </h5>
+
+                    <p class="text-muted mb-0">
+
+                        This prediction was retrieved from
+                        your prediction history.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ACTION BUTTONS
+    ====================================================== -->
+
+    <div class="d-flex gap-2">
+
+        <a
+            href="{{ url_for('history') }}"
+            class="btn btn-secondary"
+        >
+
+            <i class="bi bi-arrow-left"></i>
+
+            Back to History
+
+        </a>
+
+
+        <a
+            href="{{ url_for(
+                'prediction_bp.symptoms_page'
+            ) }}"
+            class="btn btn-primary"
+        >
+
+            <i class="bi bi-plus-circle"></i>
+
+            New Prediction
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

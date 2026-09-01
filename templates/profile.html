@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- Profile Header -->
+    <div class="card shadow-lg border-0 mb-5">
+
+        <div class="card-body p-5">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-3 text-center">
+
+                    <img src="https://ui-avatars.com/api/?name={{ user_name }}&background=0D6EFD&color=fff&size=180"
+                         class="rounded-circle shadow img-fluid">
+
+                </div>
+
+                <div class="col-lg-9">
+
+                    <h2 class="fw-bold">
+
+                        {{ user_name }}
+
+                    </h2>
+
+                    <p class="text-muted">
+
+                        Healthcare AI User
+
+                    </p>
+
+                    <span class="badge bg-success">
+
+                        Active Account
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Personal Information -->
+
+    <div class="row">
+
+        <!-- Personal Information -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow border-0 mb-4">
+
+                <div class="card-header bg-primary text-white">
+
+                    Personal Information
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-bordered">
+
+                        <tr>
+
+                            <th width="40%">Full Name</th>
+
+                            <td>{{ user_name }}</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Email</th>
+
+                            <td>{{ email }}</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Phone</th>
+
+                            <td>{{ phone if phone else "Not Available" }}</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Gender</th>
+
+                            <td>{{ gender if gender else "Not Available" }}</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Age</th>
+
+                            <td>{{ age if age else "Not Available" }}</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Joined</th>
+
+                            <td>
+
+                                {% if joined %}
+
+                                    {{ joined.strftime("%d-%b-%Y") }}
+
+                                {% else %}
+
+                                    Not Available
+
+                                {% endif %}
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Health Summary -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow border-0 mb-4">
+
+                <div class="card-header bg-success text-white">
+
+                    Health Summary
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-bordered">
+
+                        <tr>
+
+                            <th width="50%">Total Predictions</th>
+
+                            <td>{{ total_predictions }}</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Last Prediction</th>
+
+                            <td>Coming Soon</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Health Score</th>
+
+                            <td>Coming Soon</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>AI Status</th>
+
+                            <td>
+
+                                <span class="badge bg-success">
+
+                                    Ready
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Action Buttons -->
+
+    <div class="text-center mt-4">
+
+        <a href="{{ url_for('edit_profile') }}"
+           class="btn btn-primary btn-lg me-3">
+
+            <i class="bi bi-pencil-square"></i>
+
+            Edit Profile
+
+        </a>
+
+        <a href="{{ url_for('change_password') }}"
+   class="btn btn-warning btn-lg text-white">
+
+    <i class="bi bi-key-fill"></i>
+
+    Change Password
+
+</a>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,385 @@
+{% extends "base.html" %}
+
+{% block title %}Healthcare AI{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<span class="badge bg-primary mb-3 px-3 py-2">
+
+AI Powered Healthcare
+
+</span>
+
+<h1>
+
+Predict Diseases
+
+<br>
+
+With Artificial Intelligence
+
+</h1>
+
+<p class="mt-4">
+
+Healthcare AI helps you predict diseases using Machine Learning,
+receive personalized healthcare recommendations,
+diet plans, exercise suggestions, and medical guidance.
+
+</p>
+
+<div class="mt-4">
+
+{% if session.get('user_id') %}
+
+<a href="{{ url_for('dashboard') }}"
+class="btn btn-primary btn-lg me-3">
+
+Go to Dashboard
+
+</a>
+
+{% else %}
+
+<a href="{{ url_for('auth_bp.register') }}"
+class="btn btn-primary btn-lg me-3">
+
+Get Started
+
+</a>
+
+<a href="{{ url_for('auth_bp.login') }}"
+class="btn btn-outline-primary btn-lg">
+
+Login
+
+</a>
+
+{% endif %}
+
+</div>
+
+</div>
+
+<div class="col-lg-6 text-center">
+
+<img src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg"
+class="img-fluid rounded-4 shadow"
+alt="Healthcare">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= STATISTICS ================= -->
+
+<section class="stats">
+
+<div class="container">
+
+<div class="row text-center">
+
+<div class="col-md-3">
+
+<h2>100+</h2>
+
+<p>Diseases</p>
+
+</div>
+
+<div class="col-md-3">
+
+<h2>200+</h2>
+
+<p>Symptoms</p>
+
+</div>
+
+<div class="col-md-3">
+
+<h2>100%</h2>
+
+<p>AI Powered</p>
+
+</div>
+
+<div class="col-md-3">
+
+<h2>24×7</h2>
+
+<p>Healthcare Assistant</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= SERVICES ================= -->
+
+<section class="py-5">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<h2 class="fw-bold">
+
+Our Healthcare Services
+
+</h2>
+
+<p>
+
+Everything you need in one AI-powered platform
+
+</p>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+
+<div class="feature-box">
+
+<i class="bi bi-heart-pulse-fill"></i>
+
+<h4>Disease Prediction</h4>
+
+<p>
+
+Predict diseases instantly using Machine Learning.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-box">
+
+<i class="bi bi-robot"></i>
+
+<h4>AI Chatbot</h4>
+
+<p>
+
+Ask health-related questions anytime.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-box">
+
+<i class="bi bi-file-earmark-medical-fill"></i>
+
+<h4>Medical Reports</h4>
+
+<p>
+
+Generate downloadable health reports.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-box">
+
+<i class="bi bi-activity"></i>
+
+<h4>Health Analytics</h4>
+
+<p>
+
+Track prediction history and health insights.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-box">
+
+<i class="bi bi-person-vcard-fill"></i>
+
+<h4>User Profile</h4>
+
+<p>
+
+Manage your health profile securely.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="feature-box">
+
+<i class="bi bi-hospital-fill"></i>
+
+<h4>Doctor Recommendation</h4>
+
+<p>
+
+Get specialist recommendations based on predictions.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="py-5 bg-white">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<img src="https://img.freepik.com/free-vector/medical-team-concept-illustration_114360-1515.jpg"
+class="img-fluid rounded-4 shadow">
+
+</div>
+
+<div class="col-lg-6">
+
+<h2 class="fw-bold mb-4">
+
+Why Choose Healthcare AI?
+
+</h2>
+
+<ul class="list-group list-group-flush">
+
+<li class="list-group-item">
+
+✔ AI Powered Disease Prediction
+
+</li>
+
+<li class="list-group-item">
+
+✔ Oracle Database Security
+
+</li>
+
+<li class="list-group-item">
+
+✔ Personalized Diet Recommendations
+
+</li>
+
+<li class="list-group-item">
+
+✔ Exercise Suggestions
+
+</li>
+
+<li class="list-group-item">
+
+✔ Doctor Specialist Recommendation
+
+</li>
+
+<li class="list-group-item">
+
+✔ Downloadable PDF Reports
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CALL TO ACTION ================= -->
+
+<section class="py-5 text-center">
+
+<div class="container">
+
+<h2 class="fw-bold">
+
+Start Your Health Journey Today
+
+</h2>
+
+<p class="mb-4">
+
+AI-powered healthcare is just one click away.
+
+</p>
+
+{% if session.get('user_id') %}
+
+<a href="{{ url_for('prediction_bp.symptoms_page') }}"
+class="btn btn-primary btn-lg">
+
+Predict Disease
+
+</a>
+
+{% else %}
+
+<a href="{{ url_for('auth_bp.register') }}"
+class="btn btn-primary btn-lg">
+
+Create Free Account
+
+</a>
+
+{% endif %}
+
+</div>
+
+</section>
+
+{% endblock %}

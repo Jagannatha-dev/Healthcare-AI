@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}Disease Prediction{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/prediction.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ================= HEADER ================= -->
+
+<section class="prediction-header">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-8">
+
+<h1>
+
+🩺 AI Disease Prediction
+
+</h1>
+
+<p>
+
+Select your symptoms and let our Machine Learning model
+predict the most probable disease.
+
+</p>
+
+</div>
+
+<div class="col-lg-4 text-end">
+
+<i class="bi bi-heart-pulse-fill display-1 text-primary"></i>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= SEARCH ================= -->
+
+<div class="container mt-4">
+
+<div class="card shadow-lg border-0">
+
+<div class="card-body">
+
+<h3 class="mb-3">
+
+Select Symptoms
+
+</h3>
+
+<input
+
+type="text"
+
+id="searchSymptom"
+
+class="form-control"
+
+placeholder="🔍 Search Symptoms...">
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= FORM ================= -->
+
+<div class="container mt-4">
+
+<form method="POST"
+
+action="{{ url_for('prediction_bp.predict') }}">
+
+<div class="row">
+
+{% for symptom in symptoms %}
+
+<div class="col-lg-4 col-md-6 symptom-item">
+
+<div class="form-check symptom-card">
+
+<input
+
+class="form-check-input"
+
+type="checkbox"
+
+name="symptoms"
+
+value="{{ symptom }}"
+
+id="{{ symptom }}">
+
+<label
+
+class="form-check-label"
+
+for="{{ symptom }}">
+
+{{ symptom.replace("_"," ").title() }}
+
+</label>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<div class="text-center mt-5">
+
+<div class="text-center mt-5">
+
+    <button
+        type="submit"
+        id="predictBtn"
+        class="btn btn-primary btn-lg px-5"
+        disabled>
+
+        <i class="bi bi-cpu-fill"></i>
+
+        Select 4 More Symptoms
+
+    </button>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script src="{{ url_for('static', filename='js/prediction.js') }}"></script>
+
+{% endblock %}

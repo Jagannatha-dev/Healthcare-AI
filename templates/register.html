@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-7">
+
+        <div class="card shadow-lg">
+
+            <div class="card-header bg-success text-white text-center">
+
+                <h3>Create Account</h3>
+
+            </div>
+
+            <div class="card-body">
+
+                <form method="POST">
+
+                    <div class="mb-3">
+
+                        <label class="form-label">Full Name</label>
+
+                        <input type="text"
+                               name="full_name"
+                               class="form-control"
+                               required>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label>Email</label>
+
+                        <input type="email"
+                               name="email"
+                               class="form-control"
+                               required>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label>Phone</label>
+
+                        <input type="text"
+                               name="phone"
+                               class="form-control"
+                               required>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label>Password</label>
+
+                        <input type="password"
+                               name="password"
+                               class="form-control"
+                               required>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <label>Gender</label>
+
+                            <select class="form-select"
+                                    name="gender">
+
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label>Age</label>
+
+                            <input type="number"
+                                   name="age"
+                                   class="form-control"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <button class="btn btn-success w-100">
+
+                        Register
+
+                    </button>
+
+                </form>
+
+            </div>
+
+            <div class="card-footer text-center">
+
+                Already have an account?
+
+                <a href="{{ url_for('auth_bp.login') }}">
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
