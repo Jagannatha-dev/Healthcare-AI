@@ -1,0 +1,27 @@
+.table{
+
+border-radius:15px;
+
+overflow:hidden;
+
+}
+
+.table thead{
+
+background:#0D6EFD;
+
+color:white;
+
+}
+
+.table-hover tbody tr:hover{
+
+background:#EEF6FF;
+
+}
+
+.card{
+
+border-radius:20px;
+
+}

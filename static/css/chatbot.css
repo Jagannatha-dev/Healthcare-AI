@@ -1,0 +1,738 @@
+/* ==========================================================
+   Healthcare AI Chatbot
+   ========================================================== */
+
+
+/* ==========================================================
+   BODY
+   ========================================================== */
+
+body {
+    background: #eef3f8;
+}
+
+
+/* ==========================================================
+   CHATBOT CARD
+   ========================================================== */
+
+.chatbot-card {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+
+/* ==========================================================
+   CHATBOT HEADER
+   ========================================================== */
+
+.chatbot-header {
+    background: #0d6efd;
+    color: #ffffff;
+    padding: 18px 25px;
+}
+
+
+/* Bot Icon */
+
+.bot-icon {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+    color: #0d6efd;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+/* ==========================================================
+   CHAT AREA
+   ========================================================== */
+
+.chat-body {
+    height: 600px;
+
+    overflow-y: auto;
+
+    background: #f4f7fb;
+
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+
+    scroll-behavior: smooth;
+}
+
+
+/* ==========================================================
+   SCROLLBAR
+   ========================================================== */
+
+.chat-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+.chat-body::-webkit-scrollbar-thumb {
+    background: #c3c3c3;
+    border-radius: 10px;
+}
+
+
+.chat-body::-webkit-scrollbar-track {
+    background: #f4f7fb;
+}
+
+
+/* ==========================================================
+   MESSAGE
+   ========================================================== */
+
+.message {
+    display: flex;
+
+    width: 100%;
+
+    align-items: flex-end;
+
+    animation: fadeIn 0.25s ease;
+}
+
+
+/* Bot message */
+
+.bot {
+    justify-content: flex-start;
+}
+
+
+/* User message */
+
+.user {
+    justify-content: flex-end;
+}
+
+
+/* ==========================================================
+   AVATAR
+   ========================================================== */
+
+.avatar {
+    width: 45px;
+    height: 45px;
+
+    min-width: 45px;
+
+    border-radius: 50%;
+
+    background: #0d6efd;
+    color: #ffffff;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 22px;
+
+    margin-right: 12px;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ==========================================================
+   USER AVATAR
+   ========================================================== */
+
+.user::after {
+    content: "👤";
+
+    width: 45px;
+    height: 45px;
+
+    min-width: 45px;
+
+    border-radius: 50%;
+
+    background: #198754;
+    color: #ffffff;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 12px;
+
+    font-size: 20px;
+}
+
+
+/* ==========================================================
+   MESSAGE BUBBLE
+   ========================================================== */
+
+.bubble {
+    max-width: 72%;
+
+    background: #ffffff;
+
+    padding: 16px 20px;
+
+    border-radius: 18px;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    word-break: break-word;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==========================================================
+   USER BUBBLE
+   ========================================================== */
+
+.user .bubble {
+    background: #0d6efd;
+
+    color: #ffffff;
+
+    border-bottom-right-radius: 6px;
+}
+
+
+/* ==========================================================
+   BOT BUBBLE
+   ========================================================== */
+
+.bot .bubble {
+    border-bottom-left-radius: 6px;
+}
+
+
+/* ==========================================================
+   BOT CONTENT
+   ========================================================== */
+
+.bot-content {
+    display: block;
+
+    width: 100%;
+
+    line-height: 1.7;
+
+    word-break: break-word;
+}
+
+
+/* ==========================================================
+   CHAT SECTION
+   ========================================================== */
+
+.chat-section {
+    display: block !important;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ==========================================================
+   DISEASE TITLE
+   ========================================================== */
+
+.chat-section-title {
+    display: block !important;
+
+    width: 100%;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    margin: 0 0 14px 0;
+
+    padding: 0;
+
+    line-height: 1.4;
+}
+
+
+/* ==========================================================
+   DISEASE DESCRIPTION
+   ========================================================== */
+
+.chat-section-text {
+    display: block !important;
+
+    width: 100%;
+
+    font-size: 15px;
+
+    margin: 0 0 16px 0;
+
+    padding: 0;
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   CHATBOT HELP TEXT
+   ========================================================== */
+
+.chat-section-help {
+    display: block !important;
+
+    width: 100%;
+
+    font-weight: 600;
+
+    margin: 14px 0 8px 0;
+
+    padding: 0;
+
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   PARAGRAPHS
+   ========================================================== */
+
+.bot-content p {
+    display: block;
+
+    margin: 0 0 12px 0;
+
+    padding: 0;
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   LISTS
+   ========================================================== */
+
+.bubble ul,
+.bubble ol,
+.bot-content ul,
+.bot-content ol,
+.chat-section ul,
+.chat-section ol {
+    display: block !important;
+
+    margin: 10px 0 16px 0;
+
+    padding-left: 25px;
+}
+
+
+/* ==========================================================
+   LIST ITEMS
+   ========================================================== */
+
+.bubble li,
+.bot-content li,
+.chat-section li {
+    display: list-item !important;
+
+    margin: 0 0 6px 0;
+
+    padding: 0;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   HEADINGS
+   ========================================================== */
+
+.bot-content h1,
+.bot-content h2,
+.bot-content h3,
+.bot-content h4,
+.bot-content h5,
+.bot-content h6 {
+    display: block;
+
+    margin-top: 0;
+
+    margin-bottom: 12px;
+
+    padding: 0;
+
+    line-height: 1.4;
+}
+
+
+/* ==========================================================
+   H6
+   ========================================================== */
+
+.bubble h6 {
+    font-weight: 600;
+
+    margin-top: 0;
+
+    margin-bottom: 10px;
+}
+
+
+/* ==========================================================
+   BOLD TEXT
+   ========================================================== */
+
+.bot-content strong,
+.bot-content b {
+    font-weight: 700;
+}
+
+
+/* ==========================================================
+   ITALIC TEXT
+   ========================================================== */
+
+.bot-content em,
+.bot-content i {
+    font-style: italic;
+}
+
+
+/* ==========================================================
+   LINE BREAK
+   ========================================================== */
+
+.bot-content br {
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   BOT RESPONSE SPACING
+   ========================================================== */
+
+.bot-content > *:first-child {
+    margin-top: 0;
+}
+
+
+.bot-content > *:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================================
+   TIME
+   ========================================================== */
+
+.time {
+    display: block;
+
+    margin-top: 10px;
+
+    text-align: right;
+
+    font-size: 11px;
+
+    opacity: 0.7;
+}
+
+
+/* Bot time */
+
+.bot .time {
+    display: block;
+
+    margin-top: 12px;
+
+    text-align: right;
+
+    font-size: 11px;
+
+    opacity: 0.7;
+}
+
+
+/* ==========================================================
+   TYPING INDICATOR
+   ========================================================== */
+
+.typing {
+    display: flex;
+
+    gap: 6px;
+}
+
+
+.typing span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #666666;
+
+    animation: typing 1.2s infinite;
+}
+
+
+.typing span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+
+.typing span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+
+.card-footer {
+    background: #ffffff;
+
+    padding: 18px;
+
+    border-top: 1px solid #dddddd;
+}
+
+
+/* ==========================================================
+   INPUT
+   ========================================================== */
+
+#userInput {
+    border-radius: 30px;
+
+    padding: 14px 18px;
+
+    font-size: 15px;
+}
+
+
+#userInput:focus {
+    box-shadow: none;
+
+    border-color: #0d6efd;
+}
+
+
+/* ==========================================================
+   BUTTONS
+   ========================================================== */
+
+.card-footer .btn {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    margin-left: 8px;
+}
+
+
+/* ==========================================================
+   SEND BUTTON
+   ========================================================== */
+
+.card-footer .btn-primary {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* ==========================================================
+   MICROPHONE BUTTON
+   ========================================================== */
+
+.card-footer .btn-success {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* ==========================================================
+   FADE ANIMATION
+   ========================================================== */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ==========================================================
+   TYPING ANIMATION
+   ========================================================== */
+
+@keyframes typing {
+
+    0% {
+        opacity: 0.3;
+
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform: translateY(-5px);
+    }
+
+    100% {
+        opacity: 0.3;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 768px) {
+
+    .chat-body {
+        height: 500px;
+
+        padding: 15px;
+    }
+
+
+    .bubble {
+        max-width: 85%;
+
+        font-size: 14px;
+    }
+
+
+    .avatar,
+    .user::after {
+        width: 38px;
+        height: 38px;
+
+        min-width: 38px;
+
+        font-size: 18px;
+    }
+
+
+    .bot-icon {
+        width: 45px;
+        height: 45px;
+
+        font-size: 24px;
+    }
+
+
+    .chatbot-header {
+        padding: 15px;
+    }
+
+
+    .chat-section-title {
+        font-size: 18px;
+    }
+
+
+    .chat-section-text {
+        font-size: 14px;
+    }
+
+}
+
+
+/* ==========================================================
+   VERY SMALL MOBILE SCREEN
+   ========================================================== */
+
+@media (max-width: 480px) {
+
+    .chat-body {
+        height: 450px;
+
+        padding: 10px;
+    }
+
+
+    .bubble {
+        max-width: 88%;
+
+        padding: 13px 15px;
+
+        font-size: 14px;
+    }
+
+
+    .chat-section-title {
+        font-size: 17px;
+    }
+
+
+    .chat-section-text {
+        font-size: 14px;
+    }
+
+
+    .card-footer {
+        padding: 12px;
+    }
+
+
+    #userInput {
+        padding: 12px 15px;
+
+        font-size: 14px;
+    }
+
+
+    .card-footer .btn {
+        width: 45px;
+        height: 45px;
+
+        margin-left: 5px;
+    }
+
+}
