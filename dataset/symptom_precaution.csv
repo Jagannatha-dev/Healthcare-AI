@@ -1,0 +1,101 @@
+Disease,Precaution1,Precaution2,Precaution3,Precaution4
+Diabetes Mellitus,Monitor blood sugar regularly,Follow a healthy balanced diet,Exercise regularly,Take prescribed medicines
+Hypertension,Monitor blood pressure regularly,Reduce salt intake,Exercise regularly,Take prescribed medicines
+Asthma,Avoid known triggers,Use prescribed inhaler,Keep surroundings free from smoke and dust,Seek medical help for severe breathing difficulty
+COPD,Avoid smoking,Avoid air pollution,Follow prescribed treatment,Practice breathing exercises
+Pneumonia,Take prescribed medicines,Get adequate rest,Drink sufficient fluids,Seek medical help if breathing worsens
+Tuberculosis,Complete prescribed treatment,Maintain good nutrition,Avoid close contact during infectious period,Attend regular medical checkups
+COVID-19,Maintain good hygiene,Rest adequately,Stay hydrated,Seek medical help for breathing difficulty
+Influenza,Get adequate rest,Drink plenty of fluids,Maintain good hygiene,Seek medical care if symptoms become severe
+Dengue,Drink plenty of fluids,Get adequate rest,Avoid medicines that increase bleeding risk,Seek medical care for bleeding or severe symptoms
+Malaria,Take prescribed antimalarial medicines,Drink sufficient fluids,Get adequate rest,Seek immediate care for severe symptoms
+Typhoid,Complete prescribed antibiotics,Drink sufficient fluids,Eat easily digestible food,Maintain good hygiene
+Cholera,Drink oral rehydration solution,Replace lost fluids and electrolytes,Maintain strict hygiene,Seek immediate medical treatment
+Hepatitis A,Get adequate rest,Maintain a healthy diet,Avoid alcohol,Follow medical advice
+Hepatitis B,Attend regular liver checkups,Avoid alcohol,Avoid sharing personal items,Follow prescribed treatment
+Fatty Liver Disease,Maintain healthy body weight,Exercise regularly,Avoid excessive fatty foods,Avoid alcohol
+Gastritis,Avoid spicy foods,Avoid alcohol,Take medicines as prescribed,Eat smaller meals
+GERD,Avoid large meals,Avoid lying down after eating,Avoid trigger foods,Maintain healthy body weight
+Peptic Ulcer Disease,Avoid irritating foods,Avoid unnecessary painkillers,Take prescribed medicines,Avoid smoking and alcohol
+Irritable Bowel Syndrome (IBS),Identify trigger foods,Eat a balanced diet,Exercise regularly,Manage stress
+Crohn's Disease,Follow prescribed treatment,Maintain adequate nutrition,Avoid known trigger foods,Attend regular medical checkups
+Ulcerative Colitis,Follow prescribed treatment,Maintain adequate nutrition,Monitor symptoms regularly,Seek medical help for severe bleeding
+Kidney Stones,Drink sufficient water,Reduce excessive salt intake,Follow dietary advice,Seek medical help for severe pain or fever
+Chronic Kidney Disease,Monitor kidney function,Control blood pressure,Follow recommended diet,Take prescribed medicines
+Urinary Tract Infection,Drink sufficient water,Maintain personal hygiene,Do not delay urination,Complete prescribed treatment
+Migraine,Avoid known triggers,Maintain regular sleep,Stay hydrated,Manage stress
+Epilepsy,Take medicines as prescribed,Avoid known seizure triggers,Get adequate sleep,Follow regular medical checkups
+Parkinson's Disease,Take prescribed medicines,Exercise regularly,Prevent falls,Attend regular neurological checkups
+Alzheimer's Disease,Maintain a safe environment,Follow prescribed treatment,Maintain regular routines,Attend medical checkups
+Multiple Sclerosis,Follow prescribed treatment,Exercise within tolerance,Avoid excessive heat,Attend regular medical checkups
+Stroke,Seek emergency medical attention immediately,Monitor blood pressure,Follow prescribed treatment,Attend rehabilitation
+Osteoarthritis,Maintain healthy body weight,Exercise regularly,Avoid excessive joint strain,Follow prescribed pain management
+Rheumatoid Arthritis,Follow prescribed treatment,Exercise gently,Protect affected joints,Attend regular rheumatology checkups
+Osteoporosis,Ensure adequate calcium and vitamin D,Perform weight-bearing exercise,Prevent falls,Follow prescribed treatment
+Gout,Limit high-purine foods,Drink sufficient water,Maintain healthy body weight,Take prescribed medicines
+Fibromyalgia,Maintain regular sleep,Exercise gradually,Manage stress,Follow prescribed treatment
+Psoriasis,Moisturize skin regularly,Avoid known triggers,Do not scratch affected areas,Follow prescribed treatment
+Eczema (Atopic Dermatitis),Moisturize skin regularly,Avoid irritating products,Avoid scratching,Follow prescribed treatment
+Acne Vulgaris,Keep skin clean,Avoid squeezing pimples,Use non-comedogenic products,Follow dermatological advice
+Cellulitis,Keep affected area clean,Take prescribed antibiotics,Monitor spreading redness,Seek medical help if fever develops
+Fungal Infection,Keep affected area dry,Maintain good hygiene,Avoid sharing personal items,Complete prescribed antifungal treatment
+Hypothyroidism,Take thyroid medicine as prescribed,Monitor thyroid levels,Maintain a balanced diet,Attend regular medical checkups
+Hyperthyroidism,Take prescribed medicines,Monitor thyroid levels,Avoid excessive stimulants,Attend regular medical checkups
+Polycystic Ovary Syndrome (PCOS),Maintain healthy body weight,Exercise regularly,Follow a balanced diet,Attend regular medical checkups
+Endometriosis,Follow prescribed treatment,Track symptoms,Exercise moderately,Attend regular gynecological checkups
+Cervical Cancer,Attend regular screening,Follow specialist treatment,Maintain healthy lifestyle,Attend scheduled follow-up visits
+Breast Cancer,Perform recommended screening,Consult a specialist for breast changes,Follow prescribed treatment,Attend regular follow-up visits
+Prostate Cancer,Attend regular screening,Consult a specialist for urinary symptoms,Follow prescribed treatment,Attend follow-up appointments
+Colon Cancer,Attend recommended screening,Maintain a healthy diet,Exercise regularly,Follow prescribed treatment
+Leukemia,Follow specialist treatment,Avoid infection exposure,Attend regular blood tests,Report unusual bleeding or fever
+Lymphoma,Follow specialist treatment,Attend regular checkups,Maintain adequate nutrition,Report persistent fever or swelling
+Major Depressive Disorder,Seek professional mental health support,Take prescribed medicines,Maintain regular sleep,Stay connected with supportive people
+Generalized Anxiety Disorder,Practice relaxation techniques,Maintain regular sleep,Exercise regularly,Seek professional mental health support
+Bipolar Disorder,Take prescribed medicines,Maintain regular sleep,Attend psychiatric appointments,Avoid alcohol and recreational drugs
+Schizophrenia,Take prescribed medicines,Attend psychiatric follow-ups,Maintain a supportive environment,Seek urgent help for severe symptoms
+Obsessive Compulsive Disorder (OCD),Seek professional therapy,Take prescribed medicines as directed,Practice recommended coping techniques,Attend regular follow-ups
+Autism Spectrum Disorder,Maintain structured routines,Provide supportive communication,Attend recommended therapy,Follow developmental assessments
+Attention Deficit Hyperactivity Disorder (ADHD),Maintain structured routines,Follow professional guidance,Use behavioral strategies,Attend regular follow-ups
+Sleep Apnea,Maintain healthy body weight,Avoid alcohol before sleep,Sleep in a recommended position,Use prescribed sleep-apnea treatment
+Insomnia,Maintain a regular sleep schedule,Avoid caffeine late in the day,Limit screen use before bedtime,Practice relaxation techniques
+Chronic Fatigue Syndrome,Pace daily activities,Maintain adequate rest,Stay hydrated,Attend medical follow-ups
+Acute Sinusitis,Drink sufficient fluids,Use recommended nasal care,Avoid smoke and irritants,Seek medical help if symptoms worsen
+Chronic Sinusitis,Maintain nasal hygiene,Avoid known allergens,Use prescribed treatment,Consult an ENT specialist
+Otitis Media,Keep ears protected from irritants,Take prescribed medicines,Monitor fever and ear pain,Attend medical follow-up
+Conjunctivitis,Avoid touching the eyes,Wash hands frequently,Do not share towels,Seek medical help for severe eye pain or vision changes
+Glaucoma,Attend regular eye examinations,Use prescribed eye drops,Avoid missing treatment,Seek immediate care for sudden vision changes
+Cataract,Attend regular eye examinations,Protect eyes from excessive sunlight,Use prescribed eyewear,Consult an eye specialist for worsening vision
+Allergic Rhinitis,Avoid known allergens,Keep surroundings clean,Use prescribed medication,Maintain nasal hygiene
+Tonsillitis,Drink warm fluids,Get adequate rest,Maintain good oral hygiene,Seek medical help for difficulty breathing or swallowing
+Pharyngitis,Drink adequate fluids,Get sufficient rest,Avoid smoking and irritants,Seek medical help for severe symptoms
+Laryngitis,Rest the voice,Drink sufficient fluids,Avoid smoking and irritants,Seek medical help for breathing difficulty
+Coronary Artery Disease (CAD),Control blood pressure,Maintain healthy cholesterol levels,Exercise regularly,Follow prescribed cardiac treatment
+Heart Failure,Monitor body weight,Reduce salt intake,Take prescribed medicines,Seek urgent care for severe breathing difficulty
+Arrhythmia,Take prescribed medicines,Limit excessive stimulants,Attend cardiac checkups,Seek emergency care for chest pain or fainting
+Deep Vein Thrombosis (DVT),Seek immediate medical evaluation,Follow prescribed anticoagulant treatment,Avoid prolonged immobility,Report chest pain or breathing difficulty immediately
+Peripheral Artery Disease (PAD),Stop smoking,Exercise as recommended,Control blood pressure and cholesterol,Protect feet from injury
+Hyperlipidemia,Follow a heart-healthy diet,Exercise regularly,Maintain healthy body weight,Take prescribed medicines
+Obesity,Maintain a balanced diet,Exercise regularly,Set gradual weight-management goals,Seek professional nutrition guidance
+Metabolic Syndrome,Maintain healthy body weight,Exercise regularly,Reduce unhealthy fats and sugars,Monitor blood pressure and blood glucose
+Iron Deficiency Anemia,Eat iron-rich foods,Take prescribed iron supplements,Follow blood test recommendations,Identify and treat the underlying cause
+Vitamin B12 Deficiency Anemia,Eat vitamin B12-rich foods,Take prescribed supplements,Attend blood tests,Follow medical advice
+Sickle Cell Disease,Stay well hydrated,Avoid extreme temperatures,Take prescribed medicines,Seek immediate care for severe pain or breathing difficulty
+Thalassemia,Attend regular hematology checkups,Follow prescribed treatment,Maintain adequate nutrition,Follow recommended blood-transfusion care
+Hemophilia,Avoid unnecessary injuries,Follow prescribed clotting-factor treatment,Report unusual bleeding immediately,Attend hematology appointments
+Hypoglycemia,Monitor blood glucose regularly,Carry a fast source of glucose,Do not skip meals,Seek emergency help for loss of consciousness
+Hyperglycemic Crisis (DKA/HHS),Monitor blood glucose regularly,Take diabetes medicines as prescribed,Stay adequately hydrated,Seek emergency medical care for severe symptoms
+Acute Pancreatitis,Avoid alcohol,Follow recommended diet,Take prescribed medicines,Seek immediate care for severe abdominal pain
+Chronic Pancreatitis,Avoid alcohol,Follow recommended diet,Take prescribed medicines,Attend regular medical follow-ups
+Appendicitis,Seek immediate medical evaluation,Avoid delaying treatment,Follow medical advice,Do not self-treat severe abdominal pain
+Gallstones (Cholelithiasis),Avoid high-fat meals,Maintain healthy body weight,Follow medical advice,Seek care for severe abdominal pain or jaundice
+Acute Cholecystitis,Seek immediate medical evaluation,Follow prescribed treatment,Avoid heavy meals,Attend follow-up appointments
+Chronic Liver Disease (Cirrhosis),Avoid alcohol,Follow a liver-friendly diet,Take prescribed medicines,Attend regular liver checkups
+Alcoholic Liver Disease,Avoid alcohol completely,Follow prescribed treatment,Maintain adequate nutrition,Attend regular liver checkups
+Non-Alcoholic Fatty Liver Disease (NAFLD),Maintain healthy body weight,Exercise regularly,Follow a balanced diet,Avoid excessive alcohol
+Liver Cancer (Hepatocellular Carcinoma),Attend specialist appointments,Follow prescribed cancer treatment,Avoid alcohol,Attend regular monitoring
+Portal Hypertension,Follow prescribed treatment,Avoid alcohol,Attend regular liver checkups,Seek emergency care for vomiting blood
+HIV/AIDS,Take antiretroviral treatment as prescribed,Attend regular medical checkups,Practice infection prevention,Maintain adequate nutrition
+Sepsis,Seek emergency medical treatment immediately,Follow prescribed treatment,Monitor vital symptoms,Do not delay medical care
+Systemic Lupus Erythematosus (SLE),Follow prescribed treatment,Protect skin from excessive sunlight,Attend regular checkups,Maintain a balanced lifestyle
+Rheumatic Fever,Complete prescribed antibiotics,Attend regular medical follow-ups,Follow cardiac monitoring recommendations,Report worsening symptoms
+Long COVID,Maintain adequate rest,Gradually increase activity,Stay hydrated,Seek medical evaluation for persistent or worsening symptoms

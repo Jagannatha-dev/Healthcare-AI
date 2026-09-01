@@ -1,0 +1,101 @@
+Disease,EmergencyLevel,RecommendedAction
+Diabetes Mellitus,Moderate,Consult a doctor for blood glucose evaluation and regular monitoring
+Hypertension,High,Consult a doctor and monitor blood pressure regularly
+Asthma,High,Use prescribed inhaler and seek medical attention if breathing becomes severe
+COPD,High,Consult a respiratory specialist and seek urgent care for severe breathing difficulty
+Pneumonia,High,Seek medical evaluation promptly especially for high fever or breathing difficulty
+Tuberculosis,High,Seek medical evaluation and follow prescribed tuberculosis treatment
+COVID-19,Moderate,Monitor symptoms and seek medical care if breathing difficulty or chest pain develops
+Influenza,Moderate,Rest and seek medical attention if symptoms become severe or persistent
+Dengue,High,Seek medical evaluation and monitor for bleeding, severe abdominal pain, or persistent vomiting
+Malaria,High,Seek prompt medical treatment especially for high fever, confusion, or severe weakness
+Typhoid,High,Seek medical evaluation and appropriate antibiotic treatment
+Cholera,Critical,Seek immediate medical attention and urgent rehydration treatment
+Hepatitis A,Moderate,Consult a doctor for evaluation and supportive treatment
+Hepatitis B,High,Consult a doctor for liver evaluation and appropriate management
+Fatty Liver Disease,Moderate,Consult a doctor and follow recommended lifestyle and dietary changes
+Gastritis,Moderate,Consult a doctor if pain is severe, persistent, or associated with bleeding
+GERD,Moderate,Consult a doctor if symptoms are persistent or associated with chest pain or difficulty swallowing
+Peptic Ulcer Disease,High,Seek medical attention especially for vomiting blood or black stools
+Irritable Bowel Syndrome (IBS),Moderate,Consult a doctor if symptoms are persistent or significantly affect daily activities
+Crohn's Disease,High,Seek medical evaluation for persistent abdominal pain, diarrhea, bleeding, or weight loss
+Ulcerative Colitis,High,Seek medical evaluation for severe abdominal pain, heavy bleeding, or persistent diarrhea
+Kidney Stones,High,Seek medical attention for severe pain, fever, vomiting, or difficulty urinating
+Chronic Kidney Disease,High,Consult a kidney specialist and follow regular kidney function monitoring
+Urinary Tract Infection,Moderate,Consult a doctor especially if fever, kidney pain, or vomiting develops
+Migraine,Moderate,Seek medical attention for sudden severe headache, confusion, weakness, or vision problems
+Epilepsy,Critical,Seek emergency medical attention for prolonged or repeated seizures or loss of consciousness
+Parkinson's Disease,Moderate,Consult a neurologist for evaluation and ongoing management
+Alzheimer's Disease,High,Consult a specialist for evaluation and ongoing care planning
+Multiple Sclerosis,High,Consult a neurologist for new or worsening neurological symptoms
+Stroke,Critical,Seek emergency medical attention immediately for facial drooping, weakness, speech difficulty, or sudden neurological changes
+Osteoarthritis,Moderate,Consult a doctor if pain, swelling, or difficulty walking becomes severe
+Rheumatoid Arthritis,High,Consult a rheumatologist for persistent joint pain, swelling, or stiffness
+Osteoporosis,Moderate,Seek medical evaluation after fractures or severe bone pain
+Gout,Moderate,Consult a doctor for severe or recurrent joint pain and swelling
+Fibromyalgia,Moderate,Consult a doctor for persistent widespread pain and severe fatigue
+Psoriasis,Moderate,Consult a dermatologist for extensive or worsening skin symptoms
+Eczema (Atopic Dermatitis),Moderate,Consult a doctor if symptoms are severe, infected, or not improving
+Acne Vulgaris,Mild,Consult a dermatologist if acne is severe or persistent
+Cellulitis,High,Seek prompt medical attention for spreading redness, fever, swelling, or severe pain
+Fungal Infection,Moderate,Consult a doctor if the infection spreads or does not improve with treatment
+Hypothyroidism,Moderate,Consult a doctor for thyroid testing and appropriate treatment
+Hyperthyroidism,High,Seek medical attention for rapid heartbeat, severe weakness, chest pain, or confusion
+Polycystic Ovary Syndrome (PCOS),Moderate,Consult a gynecologist or endocrinologist for evaluation and management
+Endometriosis,High,Consult a gynecologist for severe pelvic pain or heavy menstrual bleeding
+Cervical Cancer,Critical,Seek specialist medical evaluation and appropriate cancer treatment
+Breast Cancer,Critical,Seek prompt specialist evaluation for a breast lump or other concerning breast changes
+Prostate Cancer,Critical,Seek specialist evaluation for urinary difficulties, blood in urine, or other concerning symptoms
+Colon Cancer,Critical,Seek prompt medical evaluation for blood in stool or persistent changes in bowel habits
+Leukemia,Critical,Seek urgent specialist evaluation for persistent fever, severe fatigue, bleeding, or frequent infections
+Lymphoma,Critical,Seek prompt specialist evaluation for persistent swollen lymph nodes, fever, or night sweats
+Major Depressive Disorder,High,Seek professional mental health evaluation especially if symptoms are severe or persistent
+Generalized Anxiety Disorder,Moderate,Consult a mental health professional for persistent or severe anxiety symptoms
+Bipolar Disorder,High,Seek professional psychiatric evaluation for severe mood changes or behavioral symptoms
+Schizophrenia,Critical,Seek urgent professional mental health evaluation for severe hallucinations, confusion, or unsafe behavior
+Obsessive Compulsive Disorder (OCD),Moderate,Consult a mental health professional for persistent or disabling symptoms
+Autism Spectrum Disorder,Moderate,Consult a qualified specialist for developmental assessment and support
+Attention Deficit Hyperactivity Disorder (ADHD),Moderate,Consult a qualified specialist for assessment and appropriate support
+Sleep Apnea,High,Consult a doctor for sleep evaluation especially with severe daytime sleepiness or breathing interruptions
+Insomnia,Moderate,Consult a doctor if sleep problems are persistent or significantly affect daily life
+Chronic Fatigue Syndrome,High,Consult a doctor for persistent severe fatigue and functional impairment   
+Acute Sinusitis,Moderate,Consult a doctor if symptoms are severe persistent or associated with swelling around the eyes
+Chronic Sinusitis,Moderate,Consult an ENT specialist for persistent symptoms or worsening breathing problems
+Otitis Media,Moderate,Seek medical evaluation for severe ear pain hearing loss or persistent fever
+Conjunctivitis,Mild,Consult a doctor if there is severe eye pain vision changes or worsening symptoms
+Glaucoma,Critical,Seek immediate ophthalmic medical attention for sudden severe eye pain vision loss or nausea
+Cataract,Moderate,Consult an eye specialist for progressive vision problems affecting daily activities
+Allergic Rhinitis,Mild,Consult a doctor if symptoms are persistent severe or interfere with normal activities
+Tonsillitis,Moderate,Seek medical attention for severe throat swelling difficulty swallowing or breathing difficulty
+Pharyngitis,Moderate,Consult a doctor if severe throat pain high fever or difficulty swallowing develops
+Laryngitis,Moderate,Seek medical evaluation if voice loss persists or breathing difficulty develops
+Coronary Artery Disease (CAD),Critical,Seek emergency medical attention for severe or persistent chest pain shortness of breath or sweating
+Heart Failure,Critical,Seek immediate medical attention for severe breathing difficulty chest pain fainting or rapidly worsening swelling
+Arrhythmia,High,Seek immediate medical attention for severe chest pain fainting severe shortness of breath or a very rapid or irregular heartbeat
+Deep Vein Thrombosis (DVT),Critical,Seek urgent medical attention for sudden leg swelling or pain especially if chest pain or shortness of breath develops
+Peripheral Artery Disease (PAD),High,Consult a vascular specialist and seek urgent care for sudden severe leg pain numbness or a non-healing wound
+Hyperlipidemia,Moderate,Consult a doctor for cholesterol evaluation and cardiovascular risk management
+Obesity,Moderate,Consult a healthcare professional for weight management and evaluation of related health risks
+Metabolic Syndrome,High,Consult a doctor for cardiovascular and metabolic risk assessment
+Iron Deficiency Anemia,Moderate,Consult a doctor for blood testing and evaluation of the underlying cause
+Vitamin B12 Deficiency Anemia,Moderate,Consult a doctor for vitamin B12 testing and appropriate treatment
+Sickle Cell Disease,High,Seek urgent medical attention for severe pain chest pain breathing difficulty or high fever
+Thalassemia,High,Consult a hematologist for evaluation and ongoing management
+Hemophilia,Critical,Seek immediate medical attention for severe or uncontrolled bleeding or bleeding after significant injury
+Hypoglycemia,Critical,Seek immediate medical attention for severe confusion seizures loss of consciousness or inability to take food safely
+Hyperglycemic Crisis (DKA/HHS),Critical,Seek emergency medical attention immediately for severe dehydration persistent vomiting confusion or loss of consciousness
+Acute Pancreatitis,Critical,Seek immediate medical attention for severe persistent upper abdominal pain vomiting or breathing difficulty
+Chronic Pancreatitis,High,Seek medical evaluation for persistent severe abdominal pain vomiting weight loss or other worsening symptoms
+Appendicitis,Critical,Seek immediate medical attention for severe or worsening abdominal pain fever vomiting or abdominal tenderness
+Gallstones (Cholelithiasis),Moderate,Seek medical evaluation for severe persistent upper abdominal pain vomiting or jaundice
+Acute Cholecystitis,Critical,Seek immediate medical attention for severe upper abdominal pain fever vomiting or jaundice
+Chronic Liver Disease (Cirrhosis),Critical,Seek urgent medical attention for confusion vomiting blood black stools severe swelling or jaundice
+Alcoholic Liver Disease,High,Consult a doctor for liver evaluation and seek urgent care for jaundice vomiting blood confusion or severe abdominal swelling
+Non-Alcoholic Fatty Liver Disease (NAFLD),Moderate,Consult a doctor for liver evaluation and management of metabolic risk factors
+Liver Cancer (Hepatocellular Carcinoma),Critical,Seek prompt specialist medical evaluation for suspected or confirmed liver cancer
+Portal Hypertension,Critical,Seek immediate medical attention for vomiting blood black stools severe abdominal swelling or confusion
+HIV/AIDS,Critical,Seek specialist medical care for evaluation treatment and management of HIV-related complications
+Sepsis,Critical,Seek emergency medical attention immediately for suspected sepsis especially with confusion rapid breathing low blood pressure or severe weakness
+Systemic Lupus Erythematosus (SLE),High,Consult a rheumatologist for evaluation especially with severe symptoms or organ-related complications
+Rheumatic Fever,High,Seek medical evaluation promptly for fever joint pain chest pain or rapid heartbeat
+Long COVID,Moderate,Consult a healthcare professional for persistent fatigue breathing problems chest pain or other prolonged symptoms
