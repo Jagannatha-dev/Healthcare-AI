@@ -9,7 +9,6 @@ DATASET_FOLDER = os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(__
 
 
 def _connection_or_error():
-    """Return a database connection or show a friendly admin error."""
     conn = get_connection()
     if conn is None:
         flash("Database connection is unavailable. Please try again.", "danger")
@@ -17,7 +16,6 @@ def _connection_or_error():
 
 
 def _safe_close(cursor=None, conn=None):
-    """Safely close a cursor and return the pooled connection."""
     if cursor is not None:
         try:
             cursor.close()
@@ -30,14 +28,15 @@ def _safe_close(cursor=None, conn=None):
             pass
 
 
-# ---------------------------
-# Admin Login
-# ---------------------------
 @admin_bp.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         username = request.form.get("username", "").strip()
         password = request.form.get("password", "")
+
+        if not username or not password:
+            flash("Username and Password are required.", "danger")
+            return render_template("admin/admin_login.html")
 
         conn = _connection_or_error()
         if conn is None:
@@ -52,13 +51,10 @@ def login():
                 WHERE USERNAME=:1 AND PASSWORD=:2
             """, (username, password))
             admin = cursor.fetchone()
-
             if admin:
                 session["admin"] = admin[1]
                 return redirect(url_for("admin.dashboard"))
-
             flash("Invalid Username or Password", "danger")
-
         except Exception as e:
             print("Admin login database error:", e)
             flash("Unable to access the database. Please try again.", "danger")
@@ -68,9 +64,6 @@ def login():
     return render_template("admin/admin_login.html")
 
 
-# ---------------------------
-# Dashboard
-# ---------------------------
 @admin_bp.route("/dashboard")
 def dashboard():
     if "admin" not in session:
@@ -83,16 +76,12 @@ def dashboard():
     cursor = None
     try:
         cursor = conn.cursor()
-
         cursor.execute("SELECT COUNT(*) FROM USERS")
         total_users = cursor.fetchone()[0]
-
         cursor.execute("SELECT COUNT(*) FROM PREDICTION_HISTORY")
         total_predictions = cursor.fetchone()[0]
-
         cursor.execute("""
-            SELECT COUNT(*)
-            FROM PREDICTION_HISTORY
+            SELECT COUNT(*) FROM PREDICTION_HISTORY
             WHERE TRUNC(PREDICTION_DATE)=TRUNC(SYSDATE)
         """)
         today_predictions = cursor.fetchone()[0]
@@ -105,10 +94,7 @@ def dashboard():
             FETCH FIRST 1 ROWS ONLY
         """)
         disease = cursor.fetchone()
-        if disease:
-            top_disease, top_count = disease[0], disease[1]
-        else:
-            top_disease, top_count = "No Data", 0
+        top_disease, top_count = (disease[0], disease[1]) if disease else ("No Data", 0)
 
         cursor.execute("""
             SELECT U.FULL_NAME, P.DISEASE_NAME, P.CONFIDENCE, P.PREDICTION_DATE
@@ -152,7 +138,6 @@ def dashboard():
             month_labels=month_labels,
             month_counts=month_counts
         )
-
     except Exception as e:
         print("Admin dashboard database error:", e)
         flash("Unable to load dashboard data. Please try again.", "danger")
@@ -161,9 +146,6 @@ def dashboard():
         _safe_close(cursor, conn)
 
 
-# ==========================
-# View All Users
-# ==========================
 @admin_bp.route("/users")
 def users():
     if "admin" not in session:
@@ -191,8 +173,7 @@ def users():
                 FROM USERS
                 ORDER BY USER_ID
             """)
-        user_rows = cursor.fetchall()
-        return render_template("admin/users.html", users=user_rows)
+        return render_template("admin/users.html", users=cursor.fetchall())
     except Exception as e:
         print("Admin users database error:", e)
         flash("Unable to load users. Please try again.", "danger")
@@ -201,9 +182,6 @@ def users():
         _safe_close(cursor, conn)
 
 
-# ==========================
-# View User
-# ==========================
 @admin_bp.route("/view-user/<int:user_id>")
 def view_user(user_id):
     if "admin" not in session:
@@ -218,14 +196,12 @@ def view_user(user_id):
         cursor = conn.cursor()
         cursor.execute("""
             SELECT USER_ID, FULL_NAME, EMAIL, PHONE, AGE, GENDER
-            FROM USERS WHERE USER_ID = :1
+            FROM USERS WHERE USER_ID=:1
         """, (user_id,))
         user = cursor.fetchone()
-
         if user is None:
             flash("User not found.", "danger")
             return redirect(url_for("admin.users"))
-
         return render_template("admin/view_user.html", user=user)
     except Exception as e:
         print("Admin view user database error:", e)
@@ -235,9 +211,6 @@ def view_user(user_id):
         _safe_close(cursor, conn)
 
 
-# ==========================
-# Edit User
-# ==========================
 @admin_bp.route("/edit-user/<int:user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
     if "admin" not in session:
@@ -250,14 +223,12 @@ def edit_user(user_id):
     cursor = None
     try:
         cursor = conn.cursor()
-
         if request.method == "POST":
             full_name = request.form.get("full_name", "").strip()
             email = request.form.get("email", "").strip()
             phone = request.form.get("phone", "").strip()
             gender = request.form.get("gender", "").strip()
             age = request.form.get("age", "").strip()
-
             cursor.execute("""
                 UPDATE USERS
                 SET FULL_NAME=:1, EMAIL=:2, PHONE=:3, GENDER=:4, AGE=:5
@@ -272,13 +243,10 @@ def edit_user(user_id):
             FROM USERS WHERE USER_ID=:1
         """, (user_id,))
         user = cursor.fetchone()
-
         if user is None:
             flash("User not found.", "danger")
             return redirect(url_for("admin.users"))
-
         return render_template("admin/edit_user.html", user=user)
-
     except Exception as e:
         try:
             conn.rollback()
@@ -291,9 +259,6 @@ def edit_user(user_id):
         _safe_close(cursor, conn)
 
 
-# ==========================
-# Prediction Management
-# ==========================
 @admin_bp.route("/predictions")
 def predictions():
     if "admin" not in session:
@@ -325,9 +290,7 @@ def predictions():
                 JOIN USERS U ON P.USER_ID=U.USER_ID
                 ORDER BY P.PREDICTION_DATE DESC
             """)
-
-        prediction_rows = cursor.fetchall()
-        return render_template("admin/predictions.html", predictions=prediction_rows)
+        return render_template("admin/predictions.html", predictions=cursor.fetchall())
     except Exception as e:
         print("Admin predictions database error:", e)
         flash("Unable to load predictions. Please try again.", "danger")
@@ -336,9 +299,6 @@ def predictions():
         _safe_close(cursor, conn)
 
 
-# ==========================
-# View Prediction
-# ==========================
 @admin_bp.route("/view-prediction/<int:history_id>")
 def view_prediction(history_id):
     if "admin" not in session:
@@ -359,7 +319,6 @@ def view_prediction(history_id):
             WHERE P.HISTORY_ID=:1
         """, (history_id,))
         prediction = cursor.fetchone()
-
         if prediction:
             prediction = list(prediction)
             if prediction[5]:
@@ -367,11 +326,9 @@ def view_prediction(history_id):
                     prediction[5] = prediction[5].read()
                 except AttributeError:
                     prediction[5] = str(prediction[5])
-
         if prediction is None:
             flash("Prediction not found.", "danger")
             return redirect(url_for("admin.predictions"))
-
         return render_template("admin/view_prediction.html", prediction=prediction)
     except Exception as e:
         print("Admin view prediction database error:", e)
@@ -381,9 +338,6 @@ def view_prediction(history_id):
         _safe_close(cursor, conn)
 
 
-# ==========================
-# Delete Prediction
-# ==========================
 @admin_bp.route("/delete-prediction/<int:history_id>")
 def delete_prediction(history_id):
     if "admin" not in session:
@@ -408,13 +362,9 @@ def delete_prediction(history_id):
         flash("Unable to delete prediction. Please try again.", "danger")
     finally:
         _safe_close(cursor, conn)
-
     return redirect(url_for("admin.predictions"))
 
 
-# ==========================
-# Delete User
-# ==========================
 @admin_bp.route("/delete-user/<int:user_id>")
 def delete_user(user_id):
     if "admin" not in session:
@@ -440,13 +390,9 @@ def delete_user(user_id):
         flash("Unable to delete user. Please try again.", "danger")
     finally:
         _safe_close(cursor, conn)
-
     return redirect(url_for("admin.users"))
 
 
-# -----------------------------
-# Datasets
-# -----------------------------
 @admin_bp.route("/datasets")
 def datasets():
     if "admin" not in session:
@@ -460,7 +406,6 @@ def datasets():
     for file in sorted(os.listdir(DATASET_FOLDER)):
         if not file.lower().endswith(".csv"):
             continue
-
         path = os.path.join(DATASET_FOLDER, file)
         try:
             df = pd.read_csv(path)
@@ -479,7 +424,6 @@ def view_dataset(filename):
     if "admin" not in session:
         return redirect(url_for("admin.login"))
 
-    # Only allow CSV files inside the dataset directory.
     if not filename.lower().endswith(".csv") or os.path.basename(filename) != filename:
         flash("Invalid dataset file.", "danger")
         return redirect(url_for("admin.datasets"))
@@ -491,225 +435,25 @@ def view_dataset(filename):
 
     try:
         df = pd.read_csv(path)
-        data = df.to_dict(orient="records")
-        columns = df.columns.tolist()
-    except EmptyDataError:
-        flash("This dataset is empty.", "warning")
-        return redirect(url_for("admin.datasets"))
-    except Exception as e:
-        print(f"Unable to read dataset {filename}: {e}")
-        flash("Unable to read dataset.", "danger")
-        return redirect(url_for("admin.datasets"))
-
-    return render_template("admin/view_dataset.html", filename=filename, columns=columns, data=data)
-
-
-# ==========================
-# Edit Dataset Row
-# ==========================
-@admin_bp.route("/datasets/<path:filename>/edit/<int:row_index>", methods=["GET", "POST"])
-def edit_dataset_row(filename, row_index):
-    if "admin" not in session:
-        return redirect(url_for("admin.login"))
-
-    if not filename.lower().endswith(".csv") or os.path.basename(filename) != filename:
-        flash("Invalid dataset file.", "danger")
-        return redirect(url_for("admin.datasets"))
-
-    path = os.path.join(DATASET_FOLDER, filename)
-    if not os.path.isfile(path):
-        flash("Dataset file not found.", "danger")
-        return redirect(url_for("admin.datasets"))
-
-    try:
-        df = pd.read_csv(path)
-    except EmptyDataError:
-        flash("This dataset is empty.", "warning")
-        return redirect(url_for("admin.datasets"))
-    except Exception as e:
-        print(f"Unable to read dataset {filename}: {e}")
-        flash("Unable to read dataset.", "danger")
-        return redirect(url_for("admin.datasets"))
-
-    if row_index < 0 or row_index >= len(df):
-        flash("Invalid dataset row.", "danger")
-        return redirect(url_for("admin.view_dataset", filename=filename))
-
-    if request.method == "POST":
-        try:
-            for column in df.columns:
-                df.at[row_index, column] = request.form.get(column, "")
-            df.to_csv(path, index=False)
-            flash("Dataset row updated successfully!", "success")
-            return redirect(url_for("admin.view_dataset", filename=filename))
-        except Exception as e:
-            print(f"Unable to save dataset row: {e}")
-            flash("Unable to save changes.", "danger")
-
-    row = df.iloc[row_index].to_dict()
-    return render_template(
-        "admin/edit_dataset_row.html",
-        filename=filename,
-        row=row,
-        columns=df.columns.tolist(),
-        row_index=row_index
-    )
-
-
-# ==========================
-# Add Dataset Row
-# ==========================
-@admin_bp.route("/datasets/<path:filename>/add", methods=["GET", "POST"])
-def add_dataset_row(filename):
-    if "admin" not in session:
-        return redirect(url_for("admin.login"))
-
-    if not filename.lower().endswith(".csv") or os.path.basename(filename) != filename:
-        flash("Invalid dataset file.", "danger")
-        return redirect(url_for("admin.datasets"))
-
-    path = os.path.join(DATASET_FOLDER, filename)
-    if not os.path.isfile(path):
-        flash("Dataset file not found.", "danger")
-        return redirect(url_for("admin.datasets"))
-
-    try:
-        df = pd.read_csv(path)
-    except EmptyDataError:
-        flash("This dataset is empty or has no columns.", "warning")
-        return redirect(url_for("admin.datasets"))
-    except Exception as e:
-        print(f"Unable to read dataset {filename}: {e}")
-        flash("Unable to read dataset.", "danger")
-        return redirect(url_for("admin.datasets"))
-
-    columns = df.columns.tolist()
-    if request.method == "POST":
-        try:
-            new_row = {column: request.form.get(column, "") for column in columns}
-            df.loc[len(df)] = new_row
-            df.to_csv(path, index=False)
-            flash("New dataset row added successfully!", "success")
-            return redirect(url_for("admin.view_dataset", filename=filename))
-        except Exception as e:
-            print(f"Unable to add dataset row: {e}")
-            flash("Unable to add row.", "danger")
-
-    return render_template("admin/add_dataset_row.html", filename=filename, columns=columns)
-
-
-# ==========================
-# Delete Dataset Row
-# ==========================
-@admin_bp.route("/datasets/<path:filename>/delete/<int:row_index>", methods=["GET"])
-def delete_dataset_row(filename, row_index):
-    if "admin" not in session:
-        return redirect(url_for("admin.login"))
-
-    if not filename.lower().endswith(".csv") or os.path.basename(filename) != filename:
-        flash("Invalid dataset file.", "danger")
-        return redirect(url_for("admin.datasets"))
-
-    path = os.path.join(DATASET_FOLDER, filename)
-    if not os.path.isfile(path):
-        flash("Dataset file not found.", "danger")
-        return redirect(url_for("admin.datasets"))
-
-    try:
-        df = pd.read_csv(path)
-    except EmptyDataError:
-        flash("Dataset is empty.", "warning")
-        return redirect(url_for("admin.datasets"))
-    except Exception as e:
-        print(f"Unable to read dataset {filename}: {e}")
-        flash("Unable to read dataset.", "danger")
-        return redirect(url_for("admin.datasets"))
-
-    if row_index < 0 or row_index >= len(df):
-        flash("Invalid dataset row.", "danger")
-        return redirect(url_for("admin.view_dataset", filename=filename))
-
-    try:
-        df = df.drop(df.index[row_index]).reset_index(drop=True)
-        df.to_csv(path, index=False)
-        flash("Dataset row deleted successfully!", "success")
-    except Exception as e:
-        print(f"Unable to delete dataset row: {e}")
-        flash("Unable to delete row.", "danger")
-
-    return redirect(url_for("admin.view_dataset", filename=filename))
-
-
-# ==========================
-# Analytics
-# ==========================
-@admin_bp.route("/analytics")
-def analytics():
-    if "admin" not in session:
-        return redirect(url_for("admin.login"))
-
-    conn = _connection_or_error()
-    if conn is None:
-        return redirect(url_for("admin.dashboard"))
-
-    cursor = None
-    try:
-        cursor = conn.cursor()
-        cursor.execute("SELECT COUNT(*) FROM USERS")
-        total_users = cursor.fetchone()[0]
-
-        cursor.execute("SELECT COUNT(*) FROM PREDICTION_HISTORY")
-        total_predictions = cursor.fetchone()[0]
-
-        cursor.execute("""
-            SELECT DISEASE_NAME, COUNT(*) AS TOTAL
-            FROM PREDICTION_HISTORY
-            GROUP BY DISEASE_NAME
-            ORDER BY TOTAL DESC
-            FETCH FIRST 1 ROW ONLY
-        """)
-        most_predicted = cursor.fetchone()
-        if most_predicted:
-            most_predicted_disease, most_predicted_count = most_predicted
-        else:
-            most_predicted_disease, most_predicted_count = "No Data", 0
-
-        cursor.execute("""
-            SELECT DISEASE_NAME, COUNT(*) AS TOTAL
-            FROM PREDICTION_HISTORY
-            GROUP BY DISEASE_NAME
-            ORDER BY TOTAL DESC
-        """)
-        disease_stats = cursor.fetchall()
-
-        cursor.execute("""
-            SELECT TRUNC(PREDICTION_DATE), COUNT(*)
-            FROM PREDICTION_HISTORY
-            GROUP BY TRUNC(PREDICTION_DATE)
-            ORDER BY TRUNC(PREDICTION_DATE)
-        """)
-        daily_stats = cursor.fetchall()
-
         return render_template(
-            "admin/analytics.html",
-            total_users=total_users,
-            total_predictions=total_predictions,
-            most_predicted_disease=most_predicted_disease,
-            most_predicted_count=most_predicted_count,
-            disease_stats=disease_stats,
-            daily_stats=daily_stats
+            "admin/view_dataset.html",
+            filename=filename,
+            columns=list(df.columns),
+            rows=df.head(100).values.tolist()
+        )
+    except EmptyDataError:
+        return render_template(
+            "admin/view_dataset.html",
+            filename=filename,
+            columns=[],
+            rows=[]
         )
     except Exception as e:
-        print("Admin analytics database error:", e)
-        flash("Unable to load analytics. Please try again.", "danger")
-        return redirect(url_for("admin.dashboard"))
-    finally:
-        _safe_close(cursor, conn)
+        print(f"Error reading {filename}: {e}")
+        flash("Unable to read dataset file.", "danger")
+        return redirect(url_for("admin.datasets"))
 
 
-# ---------------------------
-# Logout
-# ---------------------------
 @admin_bp.route("/logout")
 def logout():
     session.pop("admin", None)
