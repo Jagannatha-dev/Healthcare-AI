@@ -1,5 +1,13 @@
 import oracledb
-from config import *
+
+from config import (
+    DB_USER,
+    DB_PASSWORD,
+    DB_HOST,
+    DB_PORT,
+    DB_SERVICE,
+)
+
 
 def get_connection():
     """
@@ -9,13 +17,11 @@ def get_connection():
     try:
 
         connection = oracledb.connect(
-
             user=DB_USER,
             password=DB_PASSWORD,
             host=DB_HOST,
             port=DB_PORT,
             service_name=DB_SERVICE
-
         )
 
         return connection
