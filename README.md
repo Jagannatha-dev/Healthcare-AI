@@ -221,3 +221,85 @@ Healthcare AI
     ├── css/
     ├── js/
     └── images/
+```
+
+## ⚙️ Setup & Installation
+
+### Prerequisites
+
+- Python 3.8 or later
+- Oracle Database XE (or any reachable Oracle instance)
+- pip
+
+### 1. Clone and enter the repository
+
+```bash
+git clone https://github.com/Jagannatha-dev/Healthcare-AI.git
+cd Healthcare-AI
+```
+
+### 2. Create a virtual environment (recommended)
+
+```bash
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# Linux / macOS
+source venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure environment variables
+
+> Applies once PR #6 (credentials via `.env`) is merged.
+
+```bash
+cp .env.example .env
+```
+
+Then open `.env` and fill in your Oracle credentials. Generate a strong `SECRET_KEY`:
+
+```bash
+python -c "import secrets; print(secrets.token_hex(32))"
+```
+
+### 5. Set up the Oracle database
+
+1. Create an application user (e.g. `healthcare_ai`) in your Oracle instance
+2. Create the `users` table expected by the auth module (columns per `routes/auth.py`)
+3. Match `DB_USER` / `DB_PASSWORD` / `DB_SERVICE` in `.env` to your instance
+
+Quick connectivity check:
+
+```bash
+python db.py
+```
+
+Expected output: `Oracle Connected Successfully`.
+
+### 6. Train the ML model
+
+```bash
+python ml/train_model.py
+```
+
+Trains the Random Forest classifier on `dataset/Training.csv`, evaluates on `dataset/Testing.csv`, and saves the model artifacts used by the prediction service.
+
+### 7. Run the application
+
+```bash
+python app.py
+```
+
+Then open http://127.0.0.1:5000 (or the port shown in the console).
+
+## ⚠️ Disclaimer
+
+This system provides **preliminary, educational decision support only**. It is not a medical device and must not be used as a substitute for professional medical diagnosis. See #7 for the recommended HCP-facing positioning.
